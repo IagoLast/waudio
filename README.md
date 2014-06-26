@@ -1,4 +1,4 @@
 waudio
 ======
 
-web audio for guitarrists.
+web audio for guitarists.
