@@ -12,14 +12,14 @@ require(["webAudio/wa"], function(wa) {
 
 		wa.getAudioStream(
 			function gotStream(stream) {
-				var mediaStreamSource = wa.context.createMediaStreamSource(stream);
-				mediaStreamSource.connect(delay);
-				delay.connect(reverb.input)
-				reverb.connect(wa.context.destination)
-				mediaStreamSource.connect(wa.context.destination);
+				var microphone = wa.context.createMediaStreamSource(stream);
+				microphone.connect(delay.input);
+				//microphone.connect(reverb.input);
+				delay.connect(wa.context.destination)//*/
+				//microphone.connect(wa.context.destination);
 
 				delay.connect(wa.context.destination);
-				wa.processAudio(wa.context, mediaStreamSource, 
+				wa.processAudio(wa.context, microphone, 
 					function (timeDomain){
 						wa.drawTimeDomain(canvas1, timeDomain);
 						wa.getNoteName(timeDomain, drawPitch);
